@@ -7,10 +7,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 	justify-content: flex-end;
-`
-
-const SecondWrapper = styled.div`
-  overflow-y: scroll;
+	> div {
+    overflow-y: scroll;
+  }
 `
 
 const ChatEntry = styled.div`
@@ -32,7 +31,7 @@ const Message = styled.div`
 
 const ChatOutput = ({ messages, messageElementCallback }) => (
   <Wrapper>
-    <SecondWrapper innerRef={ el => messageElementCallback(el) }>
+    <div ref={ el => messageElementCallback(el) }>
       {
         messages.map(({ avatarUrl, lines }) => (
           <ChatEntry>
@@ -47,7 +46,7 @@ const ChatOutput = ({ messages, messageElementCallback }) => (
           </ChatEntry>
         ))
       }
-    </SecondWrapper>
+    </div>
   </Wrapper>
 )
 
