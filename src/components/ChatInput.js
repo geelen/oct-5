@@ -7,16 +7,25 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   overflow: hidden;
+  box-shadow: 0 -1px 0 #ccc;
 `
 
 const TextInput = styled.div`
   flex-grow: 1;
+  > input {
+    margin: 1rem;
+    width: calc(100% - 4rem);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+  }
 `
 const SubmitButton = styled.button`
   box-shadow: none;
   border: none;
   font-size: 1.25rem;
-  margin: 1rem 2rem;
+  margin: 1rem 2rem 1rem 1rem;
   transform: rotate(-90deg);
   width: 2.5rem;
   height: 4.5rem;
@@ -41,7 +50,9 @@ const SubmitButton = styled.button`
 
 const ChatInput = () => (
   <Wrapper>
-    <TextInput/>
+    <TextInput>
+      <input type="text"/>
+    </TextInput>
     <SubmitButton type="button">➡</SubmitButton>
   </Wrapper>
 )
