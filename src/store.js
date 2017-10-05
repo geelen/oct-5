@@ -1,7 +1,7 @@
 import { observable } from 'mobx'
 
-const MY_AVATAR = 'https://fillmurray.com/80/80'
-let BILL_MURRAY = 'https://fillmurray.com/96/96'
+export const MY_AVATAR = 'https://fillmurray.com/80/80'
+export const BILL_MURRAY = 'https://fillmurray.com/96/96'
 
 const store = observable({
   messages: [
