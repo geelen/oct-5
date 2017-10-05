@@ -27,16 +27,20 @@ const Message = styled.div`
 
 const ChatOutput = ({ messages }) => (
   <Wrapper>
-    {messages.map(({ avatarUrl, lines }) => (
-      <ChatEntry>
-        <Avatar src={ avatarUrl }/>
-        <Message>
-          { lines.map(line => (
-            <div>{ line }</div>
-          ))}
-        </Message>
-      </ChatEntry>
-    ))}
+    {
+      messages.map(({ avatarUrl, lines }) => (
+        <ChatEntry>
+          <Avatar src={avatarUrl}/>
+          <Message>
+            {
+              lines.map(line => (
+                <div>{line}</div>
+              ))
+            }
+          </Message>
+        </ChatEntry>
+      ))
+    }
   </Wrapper>
 )
 
