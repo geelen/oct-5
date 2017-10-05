@@ -33,13 +33,13 @@ const ChatOutput = ({ messages, messageElementCallback }) => (
   <Wrapper>
     <div ref={ el => messageElementCallback(el) }>
       {
-        messages.map(({ avatarUrl, lines }) => (
-          <ChatEntry>
+        messages.map(({ avatarUrl, lines }, i) => (
+          <ChatEntry key={i}>
             <Avatar src={avatarUrl}/>
             <Message>
               {
-                lines.map(line => (
-                  <div>{line}</div>
+                lines.map((line, i) => (
+                  <div key={i}>{line}</div>
                 ))
               }
             </Message>
