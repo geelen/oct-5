@@ -1,39 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import { observer } from 'mobx-react'
 
-const Wrapper = styled.div`
-  height: calc(100vh - 4rem);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-	justify-content: flex-end;
-	> div {
-    overflow-y: scroll;
-  }
-`
+import store, { messageElementCallback } from '../store'
+import { Avatar, ChatEntry, Message, Wrapper } from './ChatOutputComponents'
 
-const ChatEntry = styled.div`
-  display: flex;
-  align-items: flex-start;
-`
-const Avatar = styled.img`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  padding: 1rem;
-`
-const Message = styled.div`
-  flex-grow: 1;
-  margin: 1rem 1rem 1rem 0;
-  align-self: stretch;
-  line-height: 1.5;
-`
-
-const ChatOutput = ({ messages, messageElementCallback }) => (
+const ChatOutput = () => (
   <Wrapper>
     <div ref={ el => messageElementCallback(el) }>
       {
-        messages.map(({ avatarUrl, lines }, i) => (
+        store.messages.map(({ avatarUrl, lines }, i) => (
           <ChatEntry key={i}>
             <Avatar src={avatarUrl}/>
             <Message>
@@ -50,4 +25,4 @@ const ChatOutput = ({ messages, messageElementCallback }) => (
   </Wrapper>
 )
 
-export default ChatOutput
+export default observer(ChatOutput)

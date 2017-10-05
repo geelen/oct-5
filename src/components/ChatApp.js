@@ -8,46 +8,12 @@ const Container = styled.div`
   width: 100vw;
 `
 
-const MY_AVATAR = 'https://fillmurray.com/80/80'
-let BILL_MURRAY = 'https://fillmurray.com/96/96'
-
 class ChatApp extends React.Component {
-  state = {
-    messages: [
-      {
-        avatarUrl: BILL_MURRAY,
-        lines: [
-          'A couple of lines.',
-          'Of text'
-        ]
-      }
-    ]
-  }
-
-  handleNewMessage = (newMessage) => {
-    this.setState({
-      messages: this.state.messages.concat({
-        avatarUrl: MY_AVATAR,
-        lines: [
-          newMessage
-        ]
-      })
-    })
-    requestAnimationFrame(() => {
-      if (this.messageEl) this.messageEl.scrollTop = 100000
-    })
-  }
-
-  messageElementCallback = el => {
-    this.messageEl = el
-  }
-
   render() {
     return (
       <Container>
-        <ChatOutput messages={this.state.messages}
-                    messageElementCallback={this.messageElementCallback}/>
-        <ChatInput onNewMessage={this.handleNewMessage}/>
+        <ChatOutput/>
+        <ChatInput/>
       </Container>
     )
   }

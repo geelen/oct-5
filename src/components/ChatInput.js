@@ -1,19 +1,18 @@
 import React from 'react'
 import { SubmitButton, TextInput, Wrapper } from './ChatInputComponents'
+import { handleNewMessage } from '../store'
 
 class ChatInput extends React.Component {
   state = { currentMessage: '' }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.onNewMessage(this.state.currentMessage)
+    handleNewMessage(this.state.currentMessage)
     this.setState({ currentMessage: '' })
   }
 
   handleChange = (e) => {
-    this.setState({
-      currentMessage: e.target.value
-    })
+    this.setState({ currentMessage: e.target.value })
   }
 
   render() {
