@@ -17,20 +17,22 @@ const store = observable({
 })
 
 export const handleNewMessage = (newMessage) => {
-  store.messages = store.messages.concat({
-    avatarUrl: MY_AVATAR,
-    lines: [
-      newMessage
-    ]
-  })
+  const mostRecent = store.messages[store.messages.length - 1]
+
+  if (mostRecent && mostRecent.avatarUrl === MY_AVATAR) {
+    mostRecent.lines.push(newMessage)
+  } else {
+    store.messages.push({
+      avatarUrl: MY_AVATAR,
+      lines: [
+        newMessage
+      ]
+    })
+  }
 
   requestAnimationFrame(() => {
     if (store.messageEl) store.messageEl.scrollTop = 100000
   })
-}
-
-export const messageElementCallback = el => {
-  store.messageEl = el
 }
 
 export default store

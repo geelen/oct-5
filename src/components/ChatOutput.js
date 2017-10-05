@@ -1,12 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-import store, { messageElementCallback } from '../store'
+import store  from '../store'
 import { Avatar, ChatEntry, Message, Wrapper } from './ChatOutputComponents'
 
 const ChatOutput = () => (
   <Wrapper>
-    <div ref={ el => messageElementCallback(el) }>
+    <div ref={ el => store.messageEl = el }>
       {
         store.messages.map(({ avatarUrl, lines }, i) => (
           <ChatEntry key={i}>
