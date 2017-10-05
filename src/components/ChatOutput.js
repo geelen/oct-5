@@ -2,23 +2,15 @@ import React from 'react'
 import { observer } from 'mobx-react'
 
 import store from '../store'
-import { Avatar, ChatEntry, Message, Wrapper } from './ChatOutputComponents'
+import { Wrapper } from './ChatOutputComponents'
+import ChatEntry from './ChatEntry'
 
 const ChatOutput = () => (
   <Wrapper>
     <div ref={ el => store.messageEl = el }>
       {
-        store.messages.map(({ avatarUrl, lines }, i) => (
-          <ChatEntry key={i}>
-            <Avatar src={avatarUrl}/>
-            <Message>
-              {
-                lines.map((line, i) => (
-                  <div key={i}>{line}</div>
-                ))
-              }
-            </Message>
-          </ChatEntry>
+        store.messages.map((entry, i) => (
+          <ChatEntry key={i} entry={entry}/>
         ))
       }
     </div>

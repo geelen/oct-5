@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export const ChatEntry = styled.div`
+export const ChatLine = styled.div`
   display: flex;
   align-items: flex-start;
 `
