@@ -1,9 +1,19 @@
 import React from 'react'
+import styled from 'styled-components'
+import ChatOutput from './ChatOutput'
+import ChatInput from './ChatInput'
+
+const Container = styled.div`
+  min-height: 100vh;
+`
 
 class ChatApp extends React.Component {
   render() {
     return (
-      <h1>TODO: code up a chat app.➡</h1>
+      <Container>
+        <ChatOutput/>
+        <ChatInput/>
+      </Container>
     )
   }
 }
