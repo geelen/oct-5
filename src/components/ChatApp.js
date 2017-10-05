@@ -4,7 +4,8 @@ import ChatOutput from './ChatOutput'
 import ChatInput from './ChatInput'
 
 const Container = styled.div`
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
 `
 
 class ChatApp extends React.Component {
