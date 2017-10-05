@@ -1,13 +1,38 @@
 import React from 'react'
 import { SubmitButton, TextInput, Wrapper } from './ChatInputComponents'
 
-const ChatInput = () => (
-  <Wrapper>
-    <TextInput>
-      <input type="text"/>
-    </TextInput>
-    <SubmitButton type="button">➡</SubmitButton>
-  </Wrapper>
-)
+class ChatInput extends React.Component {
+  state = { currentMessage: '' }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("SUBMIT!")
+    console.log(this.state.currentMessage)
+    this.setState({ currentMessage: '' })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      currentMessage: e.target.value
+    })
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <Wrapper>
+          <TextInput>
+            <input type="text"
+                   name="message"
+                   required
+                   value={this.state.currentMessage}
+                   onChange={this.handleChange}/>
+          </TextInput>
+          <SubmitButton type="submit">➡</SubmitButton>
+        </Wrapper>
+      </form>
+    )
+  }
+}
 
 export default ChatInput

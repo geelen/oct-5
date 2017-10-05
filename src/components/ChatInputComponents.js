@@ -18,6 +18,9 @@ export const TextInput = styled.div`
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: 1px solid #ccc;
+    &:invalid {
+      box-shadow: none;
+    }
   }
 `
 export const SubmitButton = styled.button`
