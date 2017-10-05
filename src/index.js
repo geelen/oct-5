@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
+import ChatApp from './components/ChatApp'
 
-ReactDOM.render(<App footerMessage="This is the end of the page." />, document.getElementById('root'))
+ReactDOM.render(<ChatApp/>, document.getElementById('root'))
