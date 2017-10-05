@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-import store  from '../store'
+import store from '../store'
 import { Avatar, ChatEntry, Message, Wrapper } from './ChatOutputComponents'
 
 const ChatOutput = () => (

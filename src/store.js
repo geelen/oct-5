@@ -16,7 +16,7 @@ const store = observable({
   messageEl: null
 })
 
-export const addCurrentMessageToStore = (newMessage) => {
+export const handleNewMessage = (newMessage) => {
   const mostRecent = store.messages[store.messages.length - 1]
 
   if (mostRecent && mostRecent.avatarUrl === MY_AVATAR) {
