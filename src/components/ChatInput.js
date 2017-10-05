@@ -6,8 +6,7 @@ class ChatInput extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log("SUBMIT!")
-    console.log(this.state.currentMessage)
+    this.props.onNewMessage(this.state.currentMessage)
     this.setState({ currentMessage: '' })
   }
 

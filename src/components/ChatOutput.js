@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   height: calc(100vh - 4rem);
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  overflow-y: scroll;
 `
 
 const ChatEntry = styled.div`
@@ -24,15 +25,18 @@ const Message = styled.div`
   line-height: 1.5;
 `
 
-const ChatOutput = () => (
+const ChatOutput = ({ messages }) => (
   <Wrapper>
-    <ChatEntry>
-      <Avatar src="https://fillmurray.com/96/96"/>
-      <Message>
-        <div>A couple of lines.</div>
-        <div>Of text.</div>
-      </Message>
-    </ChatEntry>
+    {messages.map(({ avatarUrl, lines }) => (
+      <ChatEntry>
+        <Avatar src={ avatarUrl }/>
+        <Message>
+          { lines.map(line => (
+            <div>{ line }</div>
+          ))}
+        </Message>
+      </ChatEntry>
+    ))}
   </Wrapper>
 )
 
