@@ -1,36 +1,37 @@
 import React from 'react'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
+
 import { SubmitButton, TextInput, Wrapper } from './ChatInputComponents'
-import { handleNewMessage } from '../store'
+import { addCurrentMessageToStore } from '../store'
 
-class ChatInput extends React.Component {
-  state = { currentMessage: '' }
+const store = observable({
+  currentMessage: ''
+})
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    handleNewMessage(this.state.currentMessage)
-    this.setState({ currentMessage: '' })
-  }
-
-  handleChange = (e) => {
-    this.setState({ currentMessage: e.target.value })
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <Wrapper>
-          <TextInput>
-            <input type="text"
-                   name="message"
-                   required
-                   value={this.state.currentMessage}
-                   onChange={this.handleChange}/>
-          </TextInput>
-          <SubmitButton type="submit">➡</SubmitButton>
-        </Wrapper>
-      </form>
-    )
-  }
+const handleSubmit = (e) => {
+  e.preventDefault()
+  addCurrentMessageToStore()
+  store.currentMessage = ''
 }
 
-export default ChatInput
+const handleChange = (e) => {
+  store.currentMessage = e.target.value
+}
+
+const ChatInput = () => (
+  <form onSubmit={handleSubmit}>
+    <Wrapper>
+      <TextInput>
+        <input type="text"
+               name="message"
+               required
+               value={store.currentMessage}
+               onChange={handleChange}/>
+      </TextInput>
+      <SubmitButton type="submit">➡</SubmitButton>
+    </Wrapper>
+  </form>
+)
+
+export default observer(ChatInput)
