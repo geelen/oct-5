@@ -33,12 +33,20 @@ class ChatApp extends React.Component {
         ]
       })
     })
+    requestAnimationFrame(() => {
+      if (this.messageEl) this.messageEl.scrollTop = 100000
+    })
+  }
+
+  messageElementCallback = el => {
+    this.messageEl = el
   }
 
   render() {
     return (
       <Container>
-        <ChatOutput messages={this.state.messages}/>
+        <ChatOutput messages={this.state.messages}
+                    messageElementCallback={this.messageElementCallback}/>
         <ChatInput onNewMessage={this.handleNewMessage}/>
       </Container>
     )

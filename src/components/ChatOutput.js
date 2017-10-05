@@ -3,8 +3,13 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   height: calc(100vh - 4rem);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+	justify-content: flex-end;
+`
+
+const SecondWrapper = styled.div`
   overflow-y: scroll;
 `
 
@@ -25,22 +30,24 @@ const Message = styled.div`
   line-height: 1.5;
 `
 
-const ChatOutput = ({ messages }) => (
+const ChatOutput = ({ messages, messageElementCallback }) => (
   <Wrapper>
-    {
-      messages.map(({ avatarUrl, lines }) => (
-        <ChatEntry>
-          <Avatar src={avatarUrl}/>
-          <Message>
-            {
-              lines.map(line => (
-                <div>{line}</div>
-              ))
-            }
-          </Message>
-        </ChatEntry>
-      ))
-    }
+    <SecondWrapper innerRef={ el => messageElementCallback(el) }>
+      {
+        messages.map(({ avatarUrl, lines }) => (
+          <ChatEntry>
+            <Avatar src={avatarUrl}/>
+            <Message>
+              {
+                lines.map(line => (
+                  <div>{line}</div>
+                ))
+              }
+            </Message>
+          </ChatEntry>
+        ))
+      }
+    </SecondWrapper>
   </Wrapper>
 )
 
